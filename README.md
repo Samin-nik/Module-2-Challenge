@@ -40,21 +40,21 @@ Sub stock_analysis()
      MsgBox (rowCount)
      For rowIndex = 2 To rowCount
      
-'
+
         'if ticker changes then print result
         If ws.Cells(rowIndex + 1, 1).Value <> ws.Cells(rowIndex, 1).Value Then
-'
-'           'store results in variables
+
+           'store results in variables
             total = total + ws.Cells(rowIndex, 7).Value
             
             If total = 0 Then
-'
-                'print the results
+
+            'print the results
                 ws.Range("I" & 2 + columnIndex).Value = ws.Cells(rowIndex, 1).Value
                 ws.Range("J" & 2 + columnIndex).Value = 0
                 ws.Range("K" & 2 + columnIndex).Value = "%" & 0
                 ws.Range("L" & 2 + columnIndex).Value = 0
-'
+
             Else
             If ws.Cells(start, 3) = 0 Then
                 For find_value = start To rowIndex
@@ -65,12 +65,12 @@ Sub stock_analysis()
                     End If
                 Next find_value
            End If
-'
+
            change = (ws.Cells(rowIndex, 6) - ws.Cells(start, 3))
            percentChange = change / ws.Cells(start, 3)
-'
+
             start = rowIndex + 1
-'
+
             ws.Range("I" & 2 + columnIndex) = ws.Cells(rowIndex, 1).Value
             ws.Range("J" & 2 + columnIndex) = change
             ws.Range("J" & 2 + columnIndex).NumberFormat = "0.00"
